@@ -1,4 +1,4 @@
-export default interface Data<T> {
+export default interface DataResponse<T> {
 
     data: T[];
     totalPage: number;
