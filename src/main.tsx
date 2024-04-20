@@ -2,55 +2,78 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Login from "./pages/public/Login";
-import DashBoard from "./pages/protected/DashBoard";
-import Sale from "./pages/protected/sale/Sale";
-import User from "./pages/protected/admin/user/User";
-import Category from "./pages/protected/admin/category/Category";
-import Product from "./pages/protected/admin/product/Product";
+import Login from "./pages/public/LoginPage";
 import PageNotFound from "./pages/public/PageNotFound";
-import EditSale from "./pages/protected/sale/EditSale";
+import store from "./core/store/store";
+import { Provider } from "react-redux";
+import ProtectedRoute from "./pages/protected/ProtectedRoute";
+import UnAuthRoute from "./pages/public/UnAuthRoute";
+import CategoryPage from "./pages/protected/admin/category/CategoryPage";
+import DashBoardPage from "./pages/protected/DashBoardPage";
+import UserPage from "./pages/protected/admin/user/UserPage";
+import ProductPage from "./pages/protected/admin/product/ProductPage";
+import AddSalePage from "./pages/protected/sale/AddSalePage";
+import EditSalePage from "./pages/protected/sale/EditSalePage";
+import SalePage from "./pages/protected/sale/SalePage";
+import SaleDetailPage from "./pages/protected/sale/SaleDetailPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login />,
+    element: <DashBoardPage />,
     errorElement: <PageNotFound />,
   },
   {
     path: "/dashboard",
-    element: <DashBoard />,
+    element: <DashBoardPage />,
+  },
+  {
+    path: "/login",
+    element: (
+      <UnAuthRoute>
+        <Login />
+      </UnAuthRoute>
+    ),
+    errorElement: <PageNotFound />,
   },
   {
     path: "/user",
-    element: <User />,
+    element: <UserPage />,
   },
   {
     path: "/category",
-    element: <Category />,
+    element: <CategoryPage />,
   },
   {
     path: "/product",
-    element: <Product />,
+    element: (
+      <ProtectedRoute isAdmin={true}>
+        <ProductPage />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/sale",
-    element: <Sale />,
-    children:[
-      {
-        path: "/sale/:saleId",
-        element: <Sale />,
-      },
-      {
-        path: "/sale/:saleId/edit",
-        element: <EditSale />,
-      }
-    ]
+    element: <SalePage />,
+  },
+  {
+    path: "/sale/:saleId",
+    element: <SaleDetailPage />,
+  },
+  {
+    path: "/sale/add",
+    element: <AddSalePage />,
+  },
+  {
+    path: "/sale/:saleId/edit",
+    element: <EditSalePage />,
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
