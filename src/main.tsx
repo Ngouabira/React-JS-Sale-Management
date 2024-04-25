@@ -12,6 +12,7 @@ import ProductPage from './pages/protected/admin/product/ProductPage';
 import SalePage from './pages/protected/sale/SalePage';
 import PageNotFound from './pages/public/PageNotFound';
 import UnAUthRoute from './pages/public/UnAUthRoute';
+import ProtectedRoute from './pages/protected/ProtectedRoute';
 
 const router = createBrowserRouter([
   {
@@ -33,15 +34,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/category",
-    element: <CategoryPage/>,
+    element: <ProtectedRoute isAdmin={true}> <CategoryPage/></ProtectedRoute>,
   },
   {
     path: "/product",
-    element: <ProductPage/>,
+    element: <ProtectedRoute isAdmin={true}><ProductPage/></ProtectedRoute>,
   },
   {
     path: "/sale",
-    element: <SalePage/>,
+      element: <ProtectedRoute><SalePage/></ProtectedRoute>,
   },
 ]);
 

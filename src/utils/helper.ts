@@ -7,7 +7,7 @@ export const saveToken = (token: string) => {
 }
 
 export const getToken = () => {
-    return localStorage.getItem('access_token')
+    return localStorage.getItem('access_token') ?? '';
 }
 
 export const isLogged = () => {
