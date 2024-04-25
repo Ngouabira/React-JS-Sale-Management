@@ -11,7 +11,7 @@ function ProtectedRoute({ children, isAdmin=false }: protectedRouteprops) {
     const { decodedToken, isExpired } = useJwt<AuthResponse>(token);
     const role = decodedToken?.role;
     
-    if (token == null || token == "" || isExpired==false) {
+    if (token == null || token == "" || isExpired) {
         return <Navigate to="/login" replace />;
     }
 
