@@ -14,6 +14,8 @@ function Login() {
     "password": "1234"
   }
 
+  toast('Bonjour')
+
   useEffect(() => {
     dispatch(login(data))
   }, [])
