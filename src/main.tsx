@@ -17,16 +17,16 @@ import ProtectedRoute from './pages/protected/ProtectedRoute';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <DashBboard/>,
+    element: <ProtectedRoute><DashBboard/></ProtectedRoute>,
     errorElement:<PageNotFound/>
   },
   {
     path: "/dashboard",
-    element: <DashBboard/>,
+    element: <ProtectedRoute><DashBboard/></ProtectedRoute>,
   },
   {
     path: "/home",
-    element: <DashBboard/>,
+    element: <ProtectedRoute><DashBboard/></ProtectedRoute>,
   },
   {
     path: "/login",

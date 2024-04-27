@@ -19,14 +19,16 @@ function LoginPage() {
 
     const handleLogin = async (e:any) =>{
         e.preventDefault();
+        const request = await fetch(`${API_URL}/auth/login`,{
+          headers:{
+              ...DEFAULT_HEADER
+          },
+          method:'POST',
+          body:JSON.stringify(form)
+      })
+      
         try {
-            const request = await fetch(`${API_URL}/auth/login`,{
-                headers:{
-                    ...DEFAULT_HEADER
-                },
-                method:'POST',
-                body:JSON.stringify(form)
-            })
+           
             const response = await request.json()
            if (response.access_token) {
             saveToken(response.access_token);
