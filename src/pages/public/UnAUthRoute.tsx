@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom';
 function UnAUthRoute({children}:PropsWithChildren) {
     const token = getToken();
 
-    if (token!=null) {  
+    if (token!=null && token!='') {  
         return <Navigate to="/" replace/>
     }
 
