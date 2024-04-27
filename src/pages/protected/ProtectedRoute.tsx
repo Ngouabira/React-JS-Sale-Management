@@ -15,8 +15,14 @@ function ProtectedRoute({ children, isAdmin=false }: protectedRouteprops) {
         return <Navigate to="/login" replace />;
     }
 
+    if (isAdmin && role=="admin") {
+        return children; 
+    }
 
-    return isAdmin && role=="admin" ? children: (token!='' && token!=null ? <Navigate to="/dashboard" replace /> : <Navigate to="/login" replace />);
+    if (token!='' && token!=null && !isAdmin) {
+        return children; 
+    }
+
 }
 
 export default ProtectedRoute
