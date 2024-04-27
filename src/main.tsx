@@ -13,6 +13,7 @@ import SalePage from './pages/protected/sale/SalePage';
 import PageNotFound from './pages/public/PageNotFound';
 import UnAUthRoute from './pages/public/UnAUthRoute';
 import ProtectedRoute from './pages/protected/ProtectedRoute';
+import UserPage from './pages/protected/admin/user/UserPage';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
   {
     path: "/product",
     element: <ProtectedRoute isAdmin={true}><ProductPage/></ProtectedRoute>,
+  },
+  {
+    path: "/user",
+    element: <ProtectedRoute isAdmin={true}><UserPage/></ProtectedRoute>,
   },
   {
     path: "/sale",

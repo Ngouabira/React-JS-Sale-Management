@@ -9,6 +9,8 @@ function LoginPage() {
 
     const [errors, setErrors] = useState({error:''});
 
+    const [isLoading, setIsloading] = useState(false);
+
     const navigate = useNavigate();
 
     const handleChange = (e:any) =>{
@@ -19,6 +21,7 @@ function LoginPage() {
 
     const handleLogin = async (e:any) =>{
         e.preventDefault();
+        setIsloading(true);
         const request = await fetch(`${API_URL}/auth/login`,{
           headers:{
               ...DEFAULT_HEADER
@@ -39,27 +42,62 @@ function LoginPage() {
         } catch (error:any) {
             setErrors(error);
         }
+        finally{
+          setIsloading(false);
+        }
          
     }
 
   return (
-    <div className="row mt-3">
-        <div className="col-8 offset-2 mb-3">
-            {errors.error!='' && <span>{errors.error}</span>}
-            <form className="mt-3" onSubmit={handleLogin}>
-              <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-            <input type="email" name='email' onChange={handleChange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-            <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-              </div>
-              <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-            <input type="password" onChange={handleChange} className="form-control" name='password' id="exampleInputPassword1"/>
-              </div>
-              <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
+    <>
+
+  <div style={{minHeight: 464}} className="login-page">
+
+        {/* {isLoading && <span>Loading ...</span>} */}
+   
+      <div className="login-box">
+      {/* /.login-logo */}
+      <div className="card card-outline card-primary">
+        <div className="card-header text-center">
+          <a href="../../index2.html" className="h1"><b>Sale</b>Management</a>
         </div>
+        <div className="card-body">
+          <p className="login-box-msg">Login</p>
+          {errors.error!='' && <span style={{ 'color':'red' }}>{errors.error}</span>}
+          <form onSubmit={handleLogin}>
+            <div className="input-group mb-3">
+              <input type="email" required className="form-control" name='email' onChange={handleChange} placeholder="Email" />
+              <div className="input-group-append">
+                <div className="input-group-text">
+                  <span className="fas fa-envelope" />
+                </div>
+              </div>
+            </div>
+            <div className="input-group mb-3">
+              <input type="password" required className="form-control" name='password' placeholder="Password" onChange={handleChange} />
+              <div className="input-group-append">
+                <div className="input-group-text">
+                  <span className="fas fa-lock" />
+                </div>
+              </div>
+            </div>
+          <button type="submit" className="btn btn-primary" disabled={isLoading}>{!isLoading?'Login':'Loading...'}</button>
+          </form>
+          {/* /.social-auth-links */}
+          <p className="mb-1">
+            <a href="forgot-password.html">I forgot my password ? </a>
+          </p>
+        </div>
+        {/* /.card-body */}
+      </div>
+      {/* /.card */}
+      </div>
     </div>
+
+
+    </>
+
+
   )
 }
 
