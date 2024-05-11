@@ -14,6 +14,9 @@ import PageNotFound from './pages/public/PageNotFound';
 import UnAUthRoute from './pages/public/UnAUthRoute';
 import ProtectedRoute from './pages/protected/ProtectedRoute';
 import UserPage from './pages/protected/admin/user/UserPage';
+import ProtectedAdminRoute from './pages/protected/admin/ProtectedAdminRoute';
+import AddCategory from './pages/protected/admin/category/AddCategory';
+import EditCategory from './pages/protected/admin/category/EditCategory';
 
 const router = createBrowserRouter([
   {
@@ -35,15 +38,23 @@ const router = createBrowserRouter([
   },
   {
     path: "/category",
-    element: <ProtectedRoute isAdmin={true}> <CategoryPage/></ProtectedRoute>,
+    element: <ProtectedAdminRoute> <CategoryPage/></ProtectedAdminRoute>,
+  },
+  {
+    path: "/category/add",
+    element: <ProtectedAdminRoute> <AddCategory/></ProtectedAdminRoute>,
+  },
+  {
+    path: "/category/edit/:id",
+    element: <ProtectedAdminRoute> <EditCategory/></ProtectedAdminRoute>,
   },
   {
     path: "/product",
-    element: <ProtectedRoute isAdmin={true}><ProductPage/></ProtectedRoute>,
+    element: <ProtectedAdminRoute><ProductPage/></ProtectedAdminRoute>,
   },
   {
     path: "/user",
-    element: <ProtectedRoute isAdmin={true}><UserPage/></ProtectedRoute>,
+    element: <ProtectedAdminRoute><UserPage/></ProtectedAdminRoute>,
   },
   {
     path: "/sale",

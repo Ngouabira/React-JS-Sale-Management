@@ -13,3 +13,11 @@ export const getToken = () => {
 export const isLogged = () => {
     return !!localStorage.getItem('access_token')
 }
+
+export const numberToArray = (value: number): number[] => {
+    let tab = [];
+    for (let i = 0; i < value; i++) {
+        tab.push(i);
+    }
+    return tab;
+}
