@@ -116,6 +116,7 @@ function CategoryPage() {
               <div className="d-flex justify-content-between p-2">
                 <div>
                   <select name="size" className="form-control" onChange={handleChange}>
+                    <option value={1}>1</option>
                     <option value={5}>5</option>
                     <option value={10}>10</option>
                     <option value={20}>20</option>
@@ -145,8 +146,8 @@ function CategoryPage() {
               </table>
               <ul className="pagination float-right p-2">
                 {
-                  numberToArray(pagination.total_pages).map(item=> <li>
-                    <a href="#" className="nav-link btn btn-default">{item+1}</a>
+                  numberToArray(pagination.total_pages).map(page=> <li>
+                    <button type="button" onClick={()=>{ setFilter({...filter, page:page})}} className="nav-link btn btn-default">{page+1}</button>
                     </li>)
                 }
               </ul>
