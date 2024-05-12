@@ -1,36 +1,27 @@
-import { PropsWithChildren, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useJwt } from 'react-jwt';
-import { getToken } from '../../../utils/helper';
-import AuthResponse from '../../../core/models/auth.response';
+import { PropsWithChildren } from 'react';
+import { Navigate } from 'react-router-dom';
+import { getToken, getUserRoleFromToken, isTokenExpired } from '../../../utils/helper';
 import NavBar from '../../../components/NavBar';
 import Sidebar from '../../../components/Sidebar';
 
 
 function ProtectedAdminRoute({ children }: PropsWithChildren) {
     const token = getToken();
-    const { decodedToken, isExpired } = useJwt<AuthResponse>(token);
-    const role = decodedToken?.role;
+    const isExpired = isTokenExpired();
+    const role = getUserRoleFromToken();
 
-    const navigate = useNavigate();
-
-    useEffect(() => {
-
-        if ((token == '' || isExpired == true) && role != "ADMIN") {
-            navigate('/')
-        }
-
-    }, [token, isExpired, role]);
-
-    return (<div className="wrapper">
-        <NavBar />
-        <Sidebar />
-        <div className="content-wrapper">
-            {children}
-        </div>
-    </div>)
-
-
+    if ((token == '' || isExpired == true) || role != "ADMIN") {
+        return <Navigate to={'/'} replace />
+    }
+    else {
+        return (<div className="wrapper">
+            <NavBar />
+            <Sidebar />
+            <div className="content-wrapper">
+                {children}
+            </div>
+        </div>)
+    }
 
 }
 

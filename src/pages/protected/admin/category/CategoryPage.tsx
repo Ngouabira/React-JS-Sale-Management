@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { API_URL, HEADER } from "../../../../utils/const";
 import Category from "../../../../core/models/category.model";
 import FilterRequest from "../../../../core/models/filter.request";
@@ -9,7 +9,7 @@ import { alert, confirm } from "../../../../utils/sweetalert";
 
 function CategoryPage() {
 
-  const [data, setData] = useState({});
+  // const [data, setData] = useState({});
   const [pagination, setPagination] = useState<Pagination>({
     total: 0,
     per_page: 0,
@@ -25,8 +25,6 @@ function CategoryPage() {
 
   const [isLoading, setIsloading] = useState(false);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     handleData(filter);
   }, [filter])
@@ -39,14 +37,14 @@ function CategoryPage() {
 
   const handleData = async (filter: FilterRequest) => {
     setIsloading(true);
-    const request = await fetch(`${API_URL}/category?param=${filter.param}&page=${filter.page}&size=${filter.size}`, {
-      headers: {
-        ...HEADER
-      },
-      method: 'GET',
-    })
-
+    
     try {
+      const request = await fetch(`${API_URL}/category?param=${filter.param}&page=${filter.page}&size=${filter.size}`, {
+        headers: {
+          ...HEADER
+        },
+        method: 'GET',
+      })
 
       const response = await request.json();
       setCategories(response[0].data);
@@ -128,7 +126,7 @@ function CategoryPage() {
               </div>
 
 
-              <table className="table table-bordered">
+              <table className="table table-bordered table-striped">
                 <thead>
                   <th>Name</th>
                   <th>Description</th>
@@ -146,7 +144,7 @@ function CategoryPage() {
               </table>
               <ul className="pagination float-right p-2">
                 {
-                  numberToArray(pagination.total_pages).map(page=> <li>
+                  numberToArray(pagination.total_pages).map((page, index)=> <li key={index}>
                     <button type="button" onClick={()=>{ setFilter({...filter, page:page})}} className="nav-link btn btn-default">{page+1}</button>
                     </li>)
                 }

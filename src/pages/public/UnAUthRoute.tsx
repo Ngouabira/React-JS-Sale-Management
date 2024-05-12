@@ -1,20 +1,19 @@
-import { PropsWithChildren, useEffect } from "react";
-import { getToken } from "../../utils/helper";
-import { useNavigate } from "react-router-dom";
-import { useJwt } from "react-jwt";
+import { PropsWithChildren } from "react";
+import { getToken, isTokenExpired } from "../../utils/helper";
+import { Navigate } from "react-router-dom";
 
 function UnAUthRoute({ children }: PropsWithChildren) {
+
   const token = getToken();
-  const { isExpired } = useJwt(token);
-  const navigate = useNavigate();
+  const isExpired = isTokenExpired();
 
-  useEffect(() => {
-    if (token != "") {
-      navigate("/");
+    if (token != "" && isExpired==false) {
+      return <Navigate to={'/'} replace />
     }
-  }, [token]);
+    else{
+      return children;
+    }
 
-  return children;
 }
 
 export default UnAUthRoute;
