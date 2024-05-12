@@ -9,16 +9,24 @@ export const saveToken = (token: string) => {
     localStorage.setItem('access_token', token)
 }
 
-export const getToken = () =>  localStorage.getItem('access_token') ?? '';
+export const getToken = () => localStorage.getItem('access_token') ?? '';
 
 
-export const isLogged = () =>  !!localStorage.getItem('access_token')
+export const isLogged = () => !!localStorage.getItem('access_token')
 
 
 export const decodeToken = (): AuthResponse => jwtDecode(getToken()) as AuthResponse
 
 
-export const isTokenExpired = (): boolean => decodeToken().exp < (Date.now() / 1000)
+export const isTokenExpired = (): boolean => {
+    const token = getToken();
+    if (token == "") {
+        return true;
+    } else {
+
+        return decodeToken().exp < (Date.now() / 1000);
+    }
+}
 
 
 export const getUserRoleFromToken = (): string => decodeToken().role
