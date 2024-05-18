@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { API_URL, HEADER } from '../../../../utils/const';
-import { toast } from '../../../../utils/sweetalert';
+import { API_URL, HEADER } from '@utils/const';
+import { toast } from '@utils/sweetalert';
 
 function AddCategory() {
 
@@ -35,11 +35,9 @@ function AddCategory() {
         try {
 
             const response = await request.json();
-            // console.log(response);
             toast(response.message);
             setForm({ name: ' ', description: ' ' });
             navigate('/category');
-
 
         } catch (error: any) {
             setErrors(error);

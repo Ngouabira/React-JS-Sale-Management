@@ -1,7 +1,7 @@
 import  { useState } from 'react'
-import { API_URL, DEFAULT_HEADER } from '../../utils/const';
+import { API_URL, DEFAULT_HEADER } from '@utils/const';
 import { useNavigate } from 'react-router-dom';
-import { saveToken } from '../../utils/helper';
+import { saveToken } from '@utils/helper';
 
 function LoginPage() {
 

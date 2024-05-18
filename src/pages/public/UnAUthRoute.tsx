@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import { getToken, isTokenExpired } from "../../utils/helper";
+import { getToken, isTokenExpired } from "@utils/helper";
 import { Navigate } from "react-router-dom";
 
 function UnAUthRoute({ children }: PropsWithChildren) {

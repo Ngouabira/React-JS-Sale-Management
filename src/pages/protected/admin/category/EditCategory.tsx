@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { API_URL, HEADER } from '../../../../utils/const';
-import { toast } from '../../../../utils/sweetalert';
+import { API_URL, HEADER } from '@utils/const';
+import { toast } from '@utils/sweetalert';
 
 function EditCategory() {
 

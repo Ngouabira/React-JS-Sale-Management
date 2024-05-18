@@ -5,18 +5,18 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import DashBboard from './pages/protected/DashBboard';
-import LoginPage from './pages/public/LoginPage';
-import CategoryPage from './pages/protected/admin/category/CategoryPage';
-import ProductPage from './pages/protected/admin/product/ProductPage';
-import SalePage from './pages/protected/sale/SalePage';
-import PageNotFound from './pages/public/PageNotFound';
-import UnAUthRoute from './pages/public/UnAUthRoute';
-import ProtectedRoute from './pages/protected/ProtectedRoute';
-import UserPage from './pages/protected/admin/user/UserPage';
-import ProtectedAdminRoute from './pages/protected/admin/ProtectedAdminRoute';
-import AddCategory from './pages/protected/admin/category/AddCategory';
-import EditCategory from './pages/protected/admin/category/EditCategory';
+import DashBboard from '@pages/protected/DashBboard';
+import LoginPage from '@pages/public/LoginPage';
+import CategoryPage from '@pages/protected/admin/category/CategoryPage';
+import ProductPage from '@pages/protected/admin/product/ProductPage';
+import SalePage from '@pages/protected/sale/SalePage';
+import PageNotFound from '@pages/public/PageNotFound';
+import UnAUthRoute from '@pages/public/UnAUthRoute';
+import ProtectedRoute from '@pages/protected/ProtectedRoute';
+import UserPage from '@pages/protected/admin/user/UserPage';
+import ProtectedAdminRoute from '@pages/protected/admin/ProtectedAdminRoute';
+import AddCategory from '@pages/protected/admin/category/AddCategory';
+import EditCategory from '@pages/protected/admin/category/EditCategory';
 
 const router = createBrowserRouter([
   {

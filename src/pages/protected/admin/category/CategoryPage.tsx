@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
-import { API_URL, HEADER } from "../../../../utils/const";
-import Category from "../../../../core/models/category.model";
-import FilterRequest from "../../../../core/models/filter.request";
-import Pagination from "../../../../core/models/pagination.model";
-import { numberToArray } from "../../../../utils/helper";
-import { alert, confirm } from "../../../../utils/sweetalert";
+import { API_URL, HEADER } from "@utils/const";
+import Category from "@models/category.model";
+import FilterRequest from "@models/filter.request";
+import Pagination from "@models/pagination.model";
+import { numberToArray } from "@utils/helper";
+import { alert, confirm } from "@utils/sweetalert";
 
 function CategoryPage() {
 
@@ -49,10 +49,7 @@ function CategoryPage() {
       const response = await request.json();
       setCategories(response[0].data);
       setPagination(response[0].pagination);
-      console.log(response[0].data);
       
-
-
     } catch (error: any) {
       setErrors(error);
     }

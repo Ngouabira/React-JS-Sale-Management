@@ -1,8 +1,8 @@
 import { PropsWithChildren } from "react";
 import { Navigate } from "react-router-dom";
-import NavBar from "../../components/NavBar";
-import Sidebar from "../../components/Sidebar";
-import { getToken, isTokenExpired } from "../../utils/helper";
+import NavBar from "@components/NavBar";
+import Sidebar from "@components/Sidebar";
+import { getToken, isTokenExpired } from "@utils/helper";
 
 function ProtectedRoute({ children }: PropsWithChildren) {
 

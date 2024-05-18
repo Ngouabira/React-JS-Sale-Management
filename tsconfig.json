@@ -6,6 +6,19 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
+    "baseUrl":".",
+    "paths":{
+      "@core/*":["src/core/*"],
+      "@store/*":["src/core/store/*"],
+      "@models/*":["src/core/models/*"],
+      "@services/*":["src/core/services/*"],
+      "@api/*":["src/core/api/*"],
+      "@hooks/*":["src/core/hooks/*"],
+      "@utils/*":["src/utils/*"],
+      "@pages/*":["src/pages/*"],
+      "@components/*":["src/components/*"],
+    },
+
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,

@@ -1,8 +1,8 @@
 import { jwtDecode } from "jwt-decode";
-import AuthResponse from "../core/models/auth.response";
+import AuthResponse from "@models/auth.response";
 
 export const clearLocalStorage = () => {
-    localStorage.clear()
+    localStorage.clear();
 }
 
 export const saveToken = (token: string) => {
