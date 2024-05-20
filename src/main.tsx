@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import DashBboard from '@pages/protected/DashBoard';
 import LoginPage from '@pages/public/LoginPage';
-import CategoryPage from '@pages/protected/admin/category/CategoryPage';
+import CategoryPage1 from '@pages/protected/admin/category/CategoryPage1';
 import ProductPage from '@pages/protected/admin/product/ProductPage';
 import SalePage from '@pages/protected/sale/SalePage';
 import PageNotFound from '@pages/public/PageNotFound';
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/category",
-    element: <ProtectedAdminRoute> <CategoryPage/></ProtectedAdminRoute>,
+    element: <ProtectedAdminRoute> <CategoryPage1/></ProtectedAdminRoute>,
   },
   {
     path: "/category/add",
