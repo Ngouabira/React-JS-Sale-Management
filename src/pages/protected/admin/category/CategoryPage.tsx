@@ -4,8 +4,8 @@ import { API_URL, HEADER } from "@utils/const";
 import Category from "@models/category.model";
 import FilterRequest from "@models/filter.request";
 import Pagination from "@models/pagination.model";
-import { numberToArray } from "@utils/helper";
 import { alert, confirm } from "@utils/sweetalert";
+import { numberToArray } from "@utils/helper";
 
 function CategoryPage() {
 

@@ -8,7 +8,6 @@
 
     "baseUrl":".",
     "paths":{
-      "@core/*":["src/core/*"],
       "@store/*":["src/core/store/*"],
       "@models/*":["src/core/models/*"],
       "@services/*":["src/core/services/*"],

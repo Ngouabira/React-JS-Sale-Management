@@ -1,10 +1,10 @@
 import  { PropsWithChildren, useEffect } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
-import { getToken } from '../../utils/helper'
+import { useNavigate } from 'react-router-dom';
+import { getToken } from '@utils/helper'
 import { useJwt } from 'react-jwt';
-import AuthResponse from '../../core/models/auth.response';
-import NavBar from '../../components/NavBar';
-import Sidebar from '../../components/Sidebar';
+import AuthResponse from '@core/models/auth.response';
+import NavBar from '@components/NavBar';
+import Sidebar from '@components/Sidebar';
 
 type protectedRouteprops = PropsWithChildren & {isAdmin?:boolean} ;
 

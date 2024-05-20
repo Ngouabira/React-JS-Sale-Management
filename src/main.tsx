@@ -5,7 +5,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import DashBboard from '@pages/protected/DashBboard';
+import DashBboard from '@pages/protected/DashBoard';
 import LoginPage from '@pages/public/LoginPage';
 import CategoryPage from '@pages/protected/admin/category/CategoryPage';
 import ProductPage from '@pages/protected/admin/product/ProductPage';

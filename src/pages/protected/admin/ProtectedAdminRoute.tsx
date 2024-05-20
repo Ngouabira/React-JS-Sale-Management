@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { Navigate } from 'react-router-dom';
-import { getToken, getUserRoleFromToken, isTokenExpired } from '../../../utils/helper';
+import { getToken, getUserRoleFromToken, isTokenExpired } from '@utils/helper';
 import NavBar from '@components/NavBar';
 import Sidebar from '@components/Sidebar';
 
