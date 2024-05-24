@@ -14,9 +14,11 @@ export const useFetchData = <T>(urlPart: string, filter: FilterRequest) => {
 
   const [data, setData] = useState<T[]>([]);
   const [errors, setErrors] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    console.log(filter);
+    
     const fetchData = async () => {
       setIsLoading(true);
       try {
@@ -39,5 +41,5 @@ export const useFetchData = <T>(urlPart: string, filter: FilterRequest) => {
     fetchData();
   }, [filter, urlPart]);
 
-  return { data, pagination, errors, isLoading };
+  return { data, pagination, errors, isLoading, setErrors, setIsLoading };
 };

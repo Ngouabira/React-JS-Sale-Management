@@ -33,8 +33,25 @@ export const getUserRoleFromToken = (): string => decodeToken().role
 
 export const numberToArray = (value: number): number[] => {
     let tab = [];
-    for (let i = 0; i < value; i++) {
+    for (let i = 1; i <= value; i++) {
         tab.push(i);
     }
     return tab;
+}
+
+export function objectToAssociativeArray<T>(obj: T): { [key: string]: any } {
+    let associativeArray: { [key: string]: any } = {};
+
+    for (let key in obj) {
+        if (obj?.hasOwnProperty(key)) {
+            associativeArray[key] = obj[key];
+        }
+    }
+
+    return associativeArray;
+}
+
+
+export function listToAssociativeArrayList<T>(list: T[]): { [key: string]: any }[] {
+    return list.map(objectToAssociativeArray);
 }
