@@ -31,7 +31,9 @@ function EditCategory() {
       try {
   
         const response = await request.json();
-        setForm(response.item);        
+        console.log(response);
+        
+        setForm(response.data);        
   
       } catch (error: any) {
         setErrors(error);

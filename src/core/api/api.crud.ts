@@ -11,7 +11,8 @@ export const createItem = async <T>(urlPart: string, item: T) => {
     })
 }
 
-export const readData = async (urlPart: string, filter: FilterRequest) => {
+
+export const readItems = async (urlPart: string, filter: FilterRequest) => {
     return await fetch(
         `${API_URL}/${urlPart}?param=${filter.param}&page=${filter.page}&size=${filter.size}`,
         {

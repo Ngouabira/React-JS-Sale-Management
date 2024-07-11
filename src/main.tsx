@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import DashBboard from '@pages/protected/DashBoard';
 import LoginPage from '@pages/public/LoginPage';
-import CategoryPage1 from '@pages/protected/admin/category/CategoryPage1';
 import ProductPage from '@pages/protected/admin/product/ProductPage';
 import SalePage from '@pages/protected/sale/SalePage';
 import PageNotFound from '@pages/public/PageNotFound';
@@ -17,6 +16,7 @@ import UserPage from '@pages/protected/admin/user/UserPage';
 import ProtectedAdminRoute from '@pages/protected/admin/ProtectedAdminRoute';
 import AddCategory from '@pages/protected/admin/category/AddCategory';
 import EditCategory from '@pages/protected/admin/category/EditCategory';
+import CategoryPage from '@pages/protected/admin/category/CategoryPage';
 
 const router = createBrowserRouter([
   {
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/category",
-    element: <ProtectedAdminRoute> <CategoryPage1/></ProtectedAdminRoute>,
+    element: <ProtectedAdminRoute> <CategoryPage/></ProtectedAdminRoute>,
   },
   {
     path: "/category/add",
